@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>todo</title>
+    <style>
+        .img{
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Todo</h1>
+
+    <form action="/todo" method="post" enctype="multipart/form-data">
+        <lable> todo </lable>
+        <input type="text" name="fname" placeholder="Enter Your Todo">
+        <input type="file" name="fileDoc">
+        <button type="submit">add+</button>
+    </form>
+    <br>
+    <br>
+    <table border="1" width="1000">
+        <thead>
+            <tr>
+                <td>id</td>
+                <td>todo</td>
+                <td>Img</td>
+                <td>action</td>
+            </tr>
+        </thead>
+        <tbody>
+            <% todos.forEach((t,index)=>{ %>
+            <tr>
+                <th><%= index+1 %></th>
+                <th><%= t.title %></th>
+                <th><img src="<%= t.imgUrl %>" alt="<%= t.title %>" class="img"></th>
+                <th>
+                    <a href="/edit/<%= t._id %>">edit</a> ||
+                    <a href="/delet/<%= t.id %>">delete</a>
+                </th>
+            </tr>
+        <% }) %>
+        </tbody>
+    </table>
+</body>
+</html>
